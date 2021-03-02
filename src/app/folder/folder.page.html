@@ -21,10 +21,10 @@
   </div>
 
   <!-- Datos de paciente -->
-  <div>
+  <div [hidden]="!showstats">
     <ion-card>
-      <ion-card-header>
-        <ion-card-title>Mari</ion-card-title>
+      <ion-card-header *ngIf="paciente">
+        <ion-card-title>{{paciente}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-grid>

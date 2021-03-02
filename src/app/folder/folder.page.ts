@@ -47,6 +47,7 @@ export class FolderPage implements OnInit {
   public isItemAvailable = false
   public paciente = "";
   public show = true;
+  public showstats = false
   constructor(private activatedRoute: ActivatedRoute, public loadingController: LoadingController) { }
 ngOnInit(){}
   ngAfterViewInit() {
@@ -187,8 +188,8 @@ ngOnInit(){}
       duration: 2000
     });
     await loading.present();
-
     const { role, data } = await loading.onDidDismiss();
+    this.showstats = true
   }
   
 
