@@ -1,0 +1,64 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Vista usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Mari</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h1>💝&nbsp; 81</h1>
+          </ion-col>
+          <ion-col>
+            <h1>🩸&nbsp;95</h1>
+          </ion-col>
+          <ion-col>
+            <h1>😮‍💨&nbsp;25/min</h1>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Grado de estres
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #doughnutCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Movimiento
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #movementCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button  color="danger">
+    SOS
+  </ion-fab-button>
+</ion-fab>
+</ion-content>

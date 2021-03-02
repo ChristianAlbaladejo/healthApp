@@ -1,21 +1,82 @@
-<ion-header [translucent]="true">
+<ion-header translucent>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Vista médico</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Buscar paciente" (ionInput)="getItems($event, in)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
+<ion-content fullscreen>
+  <div *ngIf="isItemAvailable">
+    <ion-list *ngFor="let i of items">
+      <ion-item (click)="tabPaciente(i)">{{i}}</ion-item>
+    </ion-list>
+  </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div id="container" *ngIf="show">
+    <strong class="capitalize">Seleccione un paciente</strong>
+  </div>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- Datos de paciente -->
+  <div>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Mari</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h1>81&nbsp;mg/dL</h1>
+            </ion-col>
+            <ion-col>
+              <h1>120&nbsp;Hg1</h1>
+            </ion-col>
+            <ion-col>
+              <h1>85&nbsp;ppm</h1>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h1>12FR&nbsp;</h1>
+            </ion-col>
+            <ion-col>
+              <h1>290&nbsp;SPO</h1>
+            </ion-col>
+            <ion-col>
+              <h1>37ºC</h1>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas #lineCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Grado de estres
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Movimiento
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #movementCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

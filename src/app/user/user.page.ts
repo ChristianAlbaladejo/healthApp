@@ -2,12 +2,13 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { Chart } from 'chart.js';
+
 @Component({
-  selector: 'app-folder',
-  templateUrl: './folder.page.html',
-  styleUrls: ['./folder.page.scss'],
+  selector: 'app-user',
+  templateUrl: './user.page.html',
+  styleUrls: ['./user.page.scss'],
 })
-export class FolderPage implements OnInit {
+export class UserPage implements OnInit {
   @ViewChild("doughnutCanvas") doughnutCanvas: ElementRef;
   @ViewChild("lineCanvas") lineCanvas: ElementRef;
   @ViewChild("movementCanvas") movementCanvas: ElementRef;
@@ -15,42 +16,14 @@ export class FolderPage implements OnInit {
   private doughnutChart: Chart;
   private lineChart: Chart;
   private moveChart: Chart;
-  public clients = ["Antonia Ruiz"
-    , "Banesa Almera"
-    , "Buenos Aires de los soles"
-    , "Cairo Fernandez"
-    , "Dhaka Unami"
-    , "Estefania Luz"
-    , "Geneva Geneva"
-    , "Genoa"
-    , "Hernesto Ruiz"
-    , "Isabel Pantoja"
-    , "Jaime"
-    , "Leonardo DiCaprio"
-    , "La Jenny"
-    , "La Isabel"
-    , "Lima 01 💕 "
-    , "Maria Dolores"
-    , "Manila"
-    , "Olympia"
-    , "Oslo"
-    , "Patricia la de la tele"
-    , "Philadelphia"
-    , "San Francisco Javier"
-    , "Tania"
-    , "Tokio 🍑 "
-    , "Uelzen"
-    , "Washington Washington Washington"
-    , "Xuntutu"];
-    public items = [];
-  public searchbar ;
-  public isItemAvailable = false
-  public paciente = "";
-  public show = true;
-  constructor(private activatedRoute: ActivatedRoute, public loadingController: LoadingController) { }
-ngOnInit(){}
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
   ngAfterViewInit() {
-   
+
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: "line",
       data: {
@@ -75,9 +48,9 @@ ngOnInit(){}
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [45, 65, 75, 50, 120, 55, 60,65,59,40,50,60,66,100,120,130,130,90,85,84,70,70,70,65,65],
+            data: [45, 65, 75, 50, 120, 55, 60, 65, 59, 40, 50, 60, 66, 100, 120, 130, 130, 90, 85, 84, 70, 70, 70, 65, 65],
             spanGaps: false,
-
+            colors: ['', 'red', 'green', 'blue']
           },
           {
             label: "Saturación",
@@ -160,36 +133,5 @@ ngOnInit(){}
       }
     });
   }
-
-  getItems(ev: any, index) {
-    // set val to the value of the searchbar
-    const val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() !== '') {
-      this.items = this.clients;
-      this.isItemAvailable = true
-      this.show = false
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    } else {
-     this.isItemAvailable = false
-     this.show = true
-    }
-  }
-
-  async tabPaciente(i){
-    this.isItemAvailable = false
-    this.paciente = i;
-    const loading = await this.loadingController.create({
-      message: 'Cargando datos del paciente...',
-      duration: 2000
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-  }
-  
 
 }
