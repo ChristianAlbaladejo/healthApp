@@ -50,12 +50,22 @@
               <h1>37ºC</h1>
             </ion-col>
           </ion-row>
-
         </ion-grid>
       </ion-card-content>
     </ion-card>
 
     <ion-card>
+      <ion-card-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+            </ion-col>
+            <ion-col style="text-align: right; margin: -1rem">
+              <ion-icon name="arrow-forward-outline" style="zoom: 2;" color="primary"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
       <ion-card-content>
         <canvas #lineCanvas></canvas>
       </ion-card-content>
@@ -63,7 +73,16 @@
 
     <ion-card>
       <ion-card-header>
-        Grado de estres
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Grado de estres
+            </ion-col>
+            <ion-col style="text-align: right; margin: -1rem">
+              <ion-icon name="arrow-forward-outline" style="zoom: 2;" color="primary"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-card-header>
       <ion-card-content>
         <canvas #doughnutCanvas></canvas>
@@ -72,11 +91,25 @@
 
     <ion-card>
       <ion-card-header>
-        Movimiento
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Movimiento
+            </ion-col>
+            <ion-col style="text-align: right; margin: -1rem">
+              <ion-icon name="arrow-forward-outline" style="zoom: 2;" color="primary"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-card-header>
       <ion-card-content>
         <canvas #movementCanvas></canvas>
       </ion-card-content>
     </ion-card>
   </div>
+  <ion-fab *ngIf="paciente" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="callDoctor()" color="danger">
+      <ion-icon name="call-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

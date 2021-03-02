@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { Chart } from 'chart.js';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
@@ -42,16 +43,16 @@ export class FolderPage implements OnInit {
     , "Uelzen"
     , "Washington Washington Washington"
     , "Xuntutu"];
-    public items = [];
-  public searchbar ;
+  public items = [];
+  public searchbar;
   public isItemAvailable = false
   public paciente = "";
   public show = true;
   public showstats = false
-  constructor(private activatedRoute: ActivatedRoute, public loadingController: LoadingController) { }
-ngOnInit(){}
+  constructor(private activatedRoute: ActivatedRoute, public loadingController: LoadingController, public alertController: AlertController) { }
+  ngOnInit() { }
   ngAfterViewInit() {
-   
+
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: "line",
       data: {
@@ -76,7 +77,7 @@ ngOnInit(){}
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [45, 65, 75, 50, 120, 55, 60,65,59,40,50,60,66,100,120,130,130,90,85,84,70,70,70,65,65],
+            data: [45, 65, 75, 50, 120, 55, 60, 65, 59, 40, 50, 60, 66, 100, 120, 130, 130, 90, 85, 84, 70, 70, 70, 65, 65],
             spanGaps: false,
 
           },
@@ -163,6 +164,7 @@ ngOnInit(){}
   }
 
   getItems(ev: any, index) {
+    this.items = this.clients
     // set val to the value of the searchbar
     const val = ev.target.value;
 
@@ -175,12 +177,12 @@ ngOnInit(){}
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     } else {
-     this.isItemAvailable = false
-     this.show = true
+      this.isItemAvailable = false
+      this.show = true
     }
   }
 
-  async tabPaciente(i){
+  async tabPaciente(i) {
     this.isItemAvailable = false
     this.paciente = i;
     const loading = await this.loadingController.create({
@@ -191,6 +193,16 @@ ngOnInit(){}
     const { role, data } = await loading.onDidDismiss();
     this.showstats = true
   }
-  
+
+  async callDoctor() {
+    const alert = await this.alertController.create({
+      header: 'Llamada',
+      message: 'Llamando al paciente...',
+      buttons: ['Cancelar']
+    });
+
+    await alert.present();
+  }
+
 
 }

@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { Chart } from 'chart.js';
-
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
@@ -17,7 +17,7 @@ export class UserPage implements OnInit {
   private lineChart: Chart;
   private moveChart: Chart;
 
-  constructor() { }
+  constructor(public alertController: AlertController) { }
 
   ngOnInit() {
   }
@@ -132,6 +132,16 @@ export class UserPage implements OnInit {
         ]
       }
     });
+  }
+
+  async callDoctor(){
+    const alert = await this.alertController.create({
+      header: 'Cita concertada',
+      message: 'Se ha concertado una cita con su médico, este le llamara pronto',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }
