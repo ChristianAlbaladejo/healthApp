@@ -163,7 +163,7 @@ export class FolderPage implements OnInit {
     });
   }
 
-  getItems(ev: any, index) {
+  getItems(ev: any) {
     this.items = this.clients
     // set val to the value of the searchbar
     const val = ev.target.value;
