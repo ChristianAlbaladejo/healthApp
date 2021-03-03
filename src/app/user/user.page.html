@@ -5,8 +5,10 @@
     </ion-buttons>
     <ion-title>Vista usuário</ion-title>
   </ion-toolbar>
+    <ion-toolbar>
+      <ion-datetime value="2021-03-01T15:43:40.394Z" display-timezone="utc"></ion-datetime>
+    </ion-toolbar>
 </ion-header>
-
 <ion-content>
 <div>
   <ion-card>
@@ -17,24 +19,55 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <h1>81&nbsp;mg/dL</h1>
-          </ion-col>
-          <ion-col>
-            <h1>120&nbsp;Hg1</h1>
-          </ion-col>
-          <ion-col>
-            <h1>85&nbsp;ppm</h1>
+            <h1>TA&nbsp;120/80mmHg&nbsp;</h1>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <h1>12FR&nbsp;</h1>
+            <h1>FC&nbsp;85&nbsp;ppm</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h1>FR&nbsp;85&nbsp;rpm</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h1>StaO2&nbsp;95%</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h1>Glucosa&nbsp;100mg/de</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h1>Temperatura&nbsp;36ºC</h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Diabético</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="text-align: left;">
+            <ion-toggle color="primary"></ion-toggle>
           </ion-col>
           <ion-col>
-            <h1>290&nbsp;SPO</h1>
-          </ion-col>
-          <ion-col>
-            <h1>37ºC</h1>
+            <ion-item no-lines>
+              <ion-select okText="Okay" cancelText="Dismiss">
+                <ion-select-option value="brown">Tipo 1</ion-select-option>
+                <ion-select-option value="blonde">Tipo 2</ion-select-option>
+              </ion-select>
+            </ion-item>
           </ion-col>
         </ion-row>
       </ion-grid>
