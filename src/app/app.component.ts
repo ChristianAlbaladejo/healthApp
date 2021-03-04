@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public appPages = [
     { title: 'Vista médico', url: '/folder/Inbox', icon: 'clipboard' },
-    { title: 'Vista usuário', url: '/user', icon: 'person-circle' },
+    { title: 'Vista usuario', url: '/user', icon: 'person-circle' },
   ];
   constructor() {}
 }
